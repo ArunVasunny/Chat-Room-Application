@@ -7,7 +7,6 @@ import java.net.Socket;
 public class Server {
 
     private ServerSocket serverSocket;
-
     //Constructor
     public Server(ServerSocket serverSocket)
     {
@@ -17,6 +16,7 @@ public class Server {
     //Method for Starting server
     public void startServer()
     {
+        System.out.println("Server Started");
         try
         {
             while(!serverSocket.isClosed())
@@ -24,6 +24,8 @@ public class Server {
                 Socket socket = serverSocket.accept();
                 System.out.println("A new Client has Connected");
                 ClientHandler clientHandler = new ClientHandler(socket);
+                String clientUsername = clientHandler.getClientUsername();
+                System.out.println(clientUsername + " has Joined the Chat");
 
                 Thread thread = new Thread(clientHandler);
                 thread.start();
@@ -31,7 +33,7 @@ public class Server {
         }
         catch(Exception ex)
         {
-
+            ex.printStackTrace();
         }
 
     }
