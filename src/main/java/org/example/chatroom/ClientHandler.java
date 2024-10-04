@@ -18,6 +18,7 @@ public class ClientHandler implements Runnable{
 
     public ClientHandler(Socket socket)
     {
+
         try
         {
             this.socket = socket;
@@ -31,6 +32,12 @@ public class ClientHandler implements Runnable{
         {
             closeEverything(socket,bufferedReader,bufferedWriter);
         }
+
+    }
+
+    public String getClientUsername()
+    {
+        return this.clientUsername;
     }
 
     @Override
@@ -75,6 +82,7 @@ public class ClientHandler implements Runnable{
     public void removeClientHandler()
     {
         clientHandlers.remove(this);
+        System.out.println( clientUsername + " has left the Chat");
         broadcastMessage("SERVER: " + clientUsername + " has left the Chat");
     }
 
