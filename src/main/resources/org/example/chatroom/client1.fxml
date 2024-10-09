@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="338.0" prefWidth="524.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.chatroom.Client1Controller">
+   <children>
+      <Label layoutX="82.0" layoutY="55.0" prefHeight="25.0" prefWidth="149.0" text="Enter Username">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="82.0" layoutY="99.0" prefHeight="25.0" prefWidth="149.0" text="Enter Port">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="82.0" layoutY="150.0" prefHeight="25.0" prefWidth="149.0" text="Enter IP Address">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <TextField fx:id="userName" layoutX="302.0" layoutY="55.0" />
+      <TextField fx:id="portNumber" layoutX="302.0" layoutY="99.0" />
+      <TextField fx:id="ipAddress" layoutX="302.0" layoutY="150.0" />
+      <Button layoutX="206.0" layoutY="232.0" mnemonicParsing="false" onAction="#start" prefHeight="25.0" prefWidth="113.0" text="Start">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>
