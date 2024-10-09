@@ -1,8 +1,7 @@
 package org.example.chatroom;
 
 import java.io.IOException;
-import java.net.ServerSocket;
-import java.net.Socket;
+import java.net.*;
 
 public class Server {
 
@@ -26,7 +25,6 @@ public class Server {
                 ClientHandler clientHandler = new ClientHandler(socket);
                 String clientUsername = clientHandler.getClientUsername();
                 System.out.println(clientUsername + " has Joined the Chat");
-
                 Thread thread = new Thread(clientHandler);
                 thread.start();
             }
