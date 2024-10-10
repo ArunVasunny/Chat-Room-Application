@@ -10,6 +10,8 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
+import java.net.Socket;
+
 public class Client1Controller {
 
     @FXML
@@ -21,20 +23,6 @@ public class Client1Controller {
     @FXML
     private TextField userName;
 
-    public void getUsername()
-    {
-        String username = userName.getText();
-    }
-
-    public void getPort()
-    {
-        String port = portNumber.getText();
-    }
-
-    public void getIp()
-    {
-        String ip = ipAddress.getText();
-    }
 
     //NEED TO ADD ALERT MESSAGE WHEN TEXFIELD IS EMPTY
     public void start(ActionEvent event) {
@@ -49,9 +37,23 @@ public class Client1Controller {
                 return;
             }
 
+            //Retrieving User input
+            String ip = ipAddress.getText();
+            int port = Integer.parseInt(portNumber.getText());
+            String username = userName.getText();
+
+            //Client socket
+            Socket socket = new Socket(ip, port);
+            Client client = new Client(socket, username);
+
             // Load the new FXML file (chat window)
             FXMLLoader loader = new FXMLLoader(getClass().getResource("chat.fxml"));
             Parent chatRoot = loader.load();
+
+            //Passing client object to client2controller
+            Client2Controller client2Controller = loader.getController();
+            client2Controller.setClient(client);
+
 
             // Get the current stage and set the new scene
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
